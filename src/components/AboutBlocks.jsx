@@ -1,38 +1,111 @@
 import acmImg from "../assets/images/ACM merrut.png";
 import acmIndia from "../assets/images/ACM_india_Council.png";
+import { useEffect, useRef } from "react";
 
 function AboutBlocks() {
+  const sectionsRef = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-fade-in");
+            entry.target.style.opacity = "1";
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    sectionsRef.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const content = [
+    {
+      title: "What is ACM Professional Chapter",
+      text: "ACM brings together computing educators, researchers, and professionals to inspire dialogue, share resources, and address the field's challenges. As the world’s largest computing society, ACM strengthens the profession's collective voice through strong leadership, promotion of the highest standards, and recognition of technical excellence. Founded at the dawn of the computer age, ACM’s reach extends to every part of the globe, fostering networking opportunities that strengthen ties within and across countries.",
+      image: acmImg,
+      reverse: false,
+    },
+    {
+      title: "ACM India Council",
+      text: "The ACM India Council was created by ACM to recognize and support Indian ACM members and activities. It is an effort aimed at increasing the level and visibility of ACM activities across India. The activities involve both academia and industry in computing, including research, organization of high-quality computing conferences, advancing Computer Science education, and awards to recognize achievement.",
+      image: acmIndia,
+      reverse: true,
+    },
+  ];
+
   return (
-    <section className="about_section layout_padding">
+    <section className="py-6 bg-white overflow-hidden">
       <div className="container">
-
-        <div className="row align-items-center mb-5">
-          <div className="col-md-6">
-            <img src={acmImg} alt="" className="uniform-img" />
-          </div>
-          <div className="col-md-6">
-            <h3>What is ACM Professional Chapter</h3>
-            <p>
-              ACM brings together computing educators, researchers, and
-              professionals to inspire dialogue, share resources, and advance
-              the computing profession globally.
-            </p>
-          </div>
+        <div className="text-center mb-5">
+          <h6 className="text-uppercase text-primary fw-bold letter-spacing-2 mb-2">
+            Global Vision
+          </h6>
+          <h2 className="display-4 fw-bold">About Our Chapter</h2>
         </div>
 
-        <div className="row align-items-center">
-          <div className="col-md-6">
-            <img src={acmIndia} alt="" className="uniform-img" />
-          </div>
-          <div className="col-md-6">
-            <h3>ACM India Council</h3>
-            <p>
-              The ACM India Council supports Indian ACM members by promoting
-              research, conferences, education, and professional growth.
-            </p>
-          </div>
-        </div>
+        {content.map((item, index) => (
+          <div
+            key={index}
+            ref={(el) => (sectionsRef.current[index] = el)}
+            className={`row align-items-center mb-6`} // Removed opacity-0 for immediate visibility
+            style={{ marginBottom: "5rem" }}
+          >
+            <div
+              className={`col-lg-6 ${
+                item.reverse ? "order-lg-2" : "order-lg-1"
+              }`}
+            >
+              <div className="position-relative p-4">
+                <div
+                  className="position-absolute bg-primary rounded-4 opacity-10"
+                  style={{
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    height: "100%",
+                    transform: "rotate(-3deg)",
+                    zIndex: 0,
+                  }}
+                ></div>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="img-fluid rounded-4 shadow-lg position-relative z-1 hover-lift"
+                  style={{ width: "100%", transition: "all 0.3s ease" }}
+                />
+              </div>
+            </div>
 
+            <div
+              className={`col-lg-6 ${
+                item.reverse ? "order-lg-1" : "order-lg-2"
+              } mt-4 mt-lg-0`}
+            >
+              <div className="p-4">
+                <h3 className="fw-bold mb-4 position-relative d-inline-block display-6">
+                  {item.title}
+                  <span
+                    className="position-absolute bottom-0 start-0 w-25 bg-primary"
+                    style={{ height: "4px", borderRadius: "2px" }}
+                  ></span>
+                </h3>
+                <p
+                  className="lead text-secondary"
+                  style={{ textAlign: "justify", fontSize: "1.1rem" }}
+                >
+                  {item.text}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
