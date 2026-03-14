@@ -19,11 +19,11 @@ function PressReleases() {
             <div className="col-md-6" key={index}>
               <div className="rounded-4 overflow-hidden shadow-lg position-relative group">
                 <div className="overflow-hidden">
-                   <img 
-                    src={img} 
-                    alt={`Press Release ${index + 1}`} 
-                    className="img-fluid w-100 hover-scale transition-transform duration-500" 
-                    style={{ 
+                  <img
+                    src={img}
+                    alt={`Press Release ${index + 1}`}
+                    className="img-fluid w-100 hover-scale transition-transform duration-500"
+                    style={{
                       transition: "transform 0.5s ease",
                       cursor: "pointer"
                     }}
@@ -32,7 +32,7 @@ function PressReleases() {
                   />
                 </div>
                 <div className="position-absolute bottom-0 start-0 w-100 bg-gradient-to-t from-black via-black/50 to-transparent p-4 opacity-0 group-hover-opacity-100 transition-opacity">
-                   {/* Overlay content could go here if needed later */}
+                  {/* Overlay content could go here if needed later */}
                 </div>
               </div>
             </div>

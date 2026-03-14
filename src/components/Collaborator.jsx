@@ -21,30 +21,63 @@ function Collaborator() {
 
   return (
     <section className="py-6 bg-light position-relative overflow-hidden" ref={sectionRef}>
-       {/* Background */}
-       <div className="position-absolute top-0 start-0 w-100 h-100 bg-gradient-primary opacity-5" style={{zIndex:0}}></div>
+      {/* Background */}
+      <div className="position-absolute top-0 start-0 w-100 h-100 bg-gradient-primary opacity-5" style={{ zIndex: 0 }}></div>
 
       <div className="container position-relative z-1">
         <div className="text-center mb-5">
-           <h2 className="display-5 fw-bold">
-            Our <span className="text-primary">Collaborations</span>
+          <h2 className="display-5 fw-bold text-red mb-4 animate-slide-up">
+            <span className="text-white" style={{ fontSize: '1em', marginRight: '0.3em' }}>Our</span>
+            <span className="text-gradient-head" style={{ fontSize: '1.15em' }}>Collaborations</span>
           </h2>
-          <p className="text-secondary">Building bridges for a stronger technical future</p>
+          <div className="d-flex justify-content-center mb-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            <div
+              className="accent-line"
+              style={{
+                width: '120px',
+                height: '4px',
+                background: 'linear-gradient(90deg, var(--secondary-color), var(--accent-color))',
+                borderRadius: '10px',
+                transition: 'all 0.4s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.width = '140px';
+                e.target.style.opacity = '0.8';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.width = '120px';
+                e.target.style.opacity = '1';
+              }}
+            ></div>
+          </div>
+          <p className="text-light fst-italic fw-light animate-slide-up" style={{
+            fontSize: '1.15rem',
+            maxWidth: '600px',
+            margin: '0 auto',
+            fontFamily: 'Georgia, "Times New Roman", serif',
+            lineHeight: '1.8',
+            opacity: '0.95',
+            letterSpacing: '0.3px',
+            animationDelay: '0.4s'
+          }}>
+            Building bridges for a stronger technical future
+          </p>
         </div>
 
         <div className="card glass border-0 shadow-lg mx-auto overflow-hidden text-center hover-lift" style={{ maxWidth: "900px" }}>
           <div className="row g-0 align-items-center">
             <div className="col-md-5">
               <div className="h-100 position-relative overflow-hidden">
-                <img 
-                  src={client1} 
-                  className="img-fluid w-100 h-100 object-fit-cover" 
-                  alt="Galgotias University" 
-                  style={{ minHeight: "300px" }} 
+                <img
+                  src={client1}
+                  className="img-fluid w-100 h-100 object-fit-cover"
+                  alt="Galgotias University"
+                  style={{ minHeight: "300px" }}
                 />
-                 <div className="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 text-white">
-                   <small className="fw-bold text-uppercase ls-1">Joint Initiative</small>
-                 </div>
+                <div className="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 text-white">
+                  <small className="fw-bold text-uppercase ls-1">Joint Initiative</small>
+                </div>
               </div>
             </div>
             <div className="col-md-7">
@@ -55,8 +88,8 @@ function Collaborator() {
                   Galgotias University ACM Student Chapter and Meerut ACM Professional Chapter have joined hands to build a strong computing community focused on innovation, collaboration, and learning.
                 </p>
                 <div className="d-flex align-items-center gap-2 text-dark fw-bold small">
-                   <i className="fa fa-handshake-o text-success fa-lg"></i>
-                   <span>Strategic Partnership</span>
+                  <i className="fa fa-handshake-o text-success fa-lg"></i>
+                  <span>Strategic Partnership</span>
                 </div>
               </div>
             </div>
