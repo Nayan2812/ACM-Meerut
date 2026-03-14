@@ -1,6 +1,6 @@
 function About() {
   return (
-    <section className="py-7 position-relative" id="about">
+    <section className="py-7 position-relative" id="about" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
       {/* Background Decor */}
       <div
         className="position-absolute bg-secondary opacity-10 rounded-circle start-0 bottom-0 mb-5 ms-n5"

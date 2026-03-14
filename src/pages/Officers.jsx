@@ -10,6 +10,9 @@ import prabhdep from "../assets/images/Prabhdep.jpg";
 
 import abhinav from "../assets/images/Abhinav_1.jpeg";
 import ankit from "../assets/images/pic6.jpg";
+import nayan from "../assets/images/Nayan Mathur.jpg";
+import nisha from "../assets/images/Nisha Leharwani.jpg";
+import prakhar from "../assets/images/Prakhar Mathur.jpg";
 
 import sai from "../assets/images/Bio_SairohithThummarakoti_Image.jpg";
 import rajesh from "../assets/images/Rajesh_Vayyala.jpg";
@@ -65,14 +68,14 @@ function Officers() {
 
   return (
     <>
-      <Navbar />
+      <Navbar whiteBg={true} />
 
       <div className="bg-light min-vh-100 pb-5">
         {/* Header */}
         <section className="py-5 bg-gradient-primary text-center">
              <div className="container pt-5">
-                 <h2 className="display-4 fw-bold mb-3">Our <span className="text-primary">Leadership</span></h2>
-                 <p className="lead text-secondary mx-auto" style={{ maxWidth: '700px' }}>
+                 <h2 className="display-4 fw-bold text-white mb-3">Our <span className="text-primary">Leadership</span></h2>
+                 <p className="lead text-white mx-auto" style={{ maxWidth: '700px' }}>
                      Meet the dedicated individuals driving the vision and mission of the Meerut ACM Professional Chapter.
                  </p>
              </div>
@@ -115,35 +118,33 @@ function Officers() {
             <h3 className="fw-bold text-center mb-5 border-bottom d-inline-block px-4 pb-2 mx-auto">Web Masters</h3>
 
             <div className="row g-4 justify-content-center">
-              <div className="col-md-6 col-lg-4">
-                <div className="card h-100 border-0 shadow-sm hover-up text-center overflow-hidden">
-                    <div className="d-flex justify-content-center pt-4">
+              {[
+                { name: "Nisha Laherwani", role: "Web Master", info: "2nd year, CSE, Poornima College of Engineering", img: nisha },
+                { name: "Nayan Mathur", role: "Web Master", info: "2nd year, CSE, Poornima College of Engineering", img: nayan },
+                { name: "Nihal Gupta", role: "Web Master", info: "2nd year, CSE, Poornima College of Engineering" },
+                { name: "Prakhar Mathur", role: "Web Master", info: "2nd year, CSE, Poornima College of Engineering", img: prakhar },
+              ].map((member, index) => (
+                <div className="col-md-6 col-lg-4" key={index}>
+                  <div className="card h-100 border-0 shadow-sm hover-up text-center overflow-hidden p-4">
+                    {member.img ? (
+                      <div className="d-flex justify-content-center mb-3">
                         <div className="rounded-circle p-1 border border-3 border-info" style={{ width: '130px', height: '130px' }}>
-                           <img src={abhinav} alt="Abhinav Arora" className="img-fluid rounded-circle w-100 h-100 object-fit-cover" />
+                          <img src={member.img} alt={member.name} className="img-fluid rounded-circle w-100 h-100 object-fit-cover" />
                         </div>
+                      </div>
+                    ) : (
+                      <div className="mb-3 mt-2 text-info d-flex justify-content-center align-items-center" style={{ height: '130px' }}>
+                        <i className="fa fa-user-circle fa-4x opacity-25"></i>
+                      </div>
+                    )}
+                    <div className="card-body p-0">
+                      <h5 className="card-title fw-bold mb-1">{member.name}</h5>
+                      <h6 className="text-info fw-semibold mb-3">{member.role}</h6>
+                      <p className="card-text text-secondary small mb-0">{member.info}</p>
                     </div>
-                  <div className="card-body">
-                    <h5 className="card-title fw-bold">Abhinav Arora</h5>
-                    <h6 className="text-info fw-semibold mb-2">Web Master</h6>
-                    <p className="card-text text-secondary small">4th Year CSE, Poornima College of Engineering</p>
                   </div>
                 </div>
-              </div>
-
-              <div className="col-md-6 col-lg-4">
-                <div className="card h-100 border-0 shadow-sm hover-up text-center overflow-hidden">
-                    <div className="d-flex justify-content-center pt-4">
-                        <div className="rounded-circle p-1 border border-3 border-info" style={{ width: '130px', height: '130px' }}>
-                           <img src={ankit} alt="Ankit Kumar" className="img-fluid rounded-circle w-100 h-100 object-fit-cover" />
-                        </div>
-                    </div>
-                  <div className="card-body">
-                    <h5 className="card-title fw-bold">Ankit Kumar</h5>
-                    <h6 className="text-info fw-semibold mb-2">Web Master</h6>
-                    <p className="card-text text-secondary small">3rd Year AI, Poornima College of Engineering</p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>

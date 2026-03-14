@@ -44,29 +44,130 @@ function Hero() {
         paddingTop: "80px",
       }}
     >
-      {/* Decorative Background Elements */}
-      <div
-        className="position-absolute bg-primary rounded-circle"
-        style={{
-          width: "500px",
-          height: "500px",
-          top: "-150px",
-          right: "-100px",
-          opacity: "0.08",
-          filter: "blur(80px)",
-        }}
-      ></div>
-      <div
-        className="position-absolute bg-info rounded-circle"
-        style={{
-          width: "400px",
-          height: "400px",
-          bottom: "50px",
-          left: "-100px",
-          opacity: "0.1",
-          filter: "blur(60px)",
-        }}
-      ></div>
+      {/* === Research-Themed Neural Network / Knowledge Graph Background === */}
+      <svg
+        className="position-absolute top-0 start-0 w-100 h-100"
+        style={{ zIndex: 0, pointerEvents: "none", opacity: 0.5 }}
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid slice"
+        viewBox="0 0 1440 900"
+      >
+        <defs>
+          <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stopColor="rgba(0,86,179,0.35)" />
+            <stop offset="100%" stopColor="rgba(0,86,179,0)" />
+          </radialGradient>
+          <radialGradient id="bgGlowTR" cx="90%" cy="5%" r="45%">
+            <stop offset="0%"   stopColor="rgba(0,86,179,0.07)" />
+            <stop offset="100%" stopColor="rgba(0,86,179,0)" />
+          </radialGradient>
+          <radialGradient id="bgGlowBL" cx="5%" cy="95%" r="40%">
+            <stop offset="0%"   stopColor="rgba(56,189,248,0.06)" />
+            <stop offset="100%" stopColor="rgba(56,189,248,0)" />
+          </radialGradient>
+        </defs>
+
+        {/* Soft bg glows */}
+        <rect width="1440" height="900" fill="url(#bgGlowTR)" />
+        <rect width="1440" height="900" fill="url(#bgGlowBL)" />
+
+        {/* === Neural Network Edges (connections between nodes) === */}
+        {/* Input layer → Hidden layer 1 */}
+        {[[80,180],[80,350],[80,520],[80,690]].map(([x1,y1]) =>
+          [[280,150],[280,300],[280,450],[280,600],[280,750]].map(([x2,y2],j) => (
+            <line key={`e1-${x1}-${j}`} x1={x1} y1={y1} x2={x2} y2={y2}
+              stroke="rgba(0,86,179,0.07)" strokeWidth="1" />
+          ))
+        )}
+        {/* Hidden layer 1 → Hidden layer 2 */}
+        {[[280,150],[280,300],[280,450],[280,600],[280,750]].map(([x1,y1]) =>
+          [[520,200],[520,380],[520,560],[520,740]].map(([x2,y2],j) => (
+            <line key={`e2-${x1}-${j}`} x1={x1} y1={y1} x2={x2} y2={y2}
+              stroke="rgba(0,86,179,0.07)" strokeWidth="1" />
+          ))
+        )}
+        {/* Hidden layer 2 → Hidden layer 3 */}
+        {[[520,200],[520,380],[520,560],[520,740]].map(([x1,y1]) =>
+          [[760,170],[760,340],[760,510],[760,680]].map(([x2,y2],j) => (
+            <line key={`e3-${x1}-${j}`} x1={x1} y1={y1} x2={x2} y2={y2}
+              stroke="rgba(0,86,179,0.06)" strokeWidth="1" />
+          ))
+        )}
+        {/* Right side: knowledge graph edges */}
+        <line x1="1050" y1="200" x2="1200" y2="130" stroke="rgba(0,86,179,0.1)" strokeWidth="1.2" />
+        <line x1="1050" y1="200" x2="1280" y2="300" stroke="rgba(0,86,179,0.1)" strokeWidth="1.2" />
+        <line x1="1050" y1="200" x2="1150" y2="380" stroke="rgba(0,86,179,0.1)" strokeWidth="1.2" />
+        <line x1="1050" y1="200" x2="950"  y2="340" stroke="rgba(0,86,179,0.09)" strokeWidth="1.2" />
+        <line x1="1200" y1="130" x2="1350" y2="180" stroke="rgba(0,86,179,0.08)" strokeWidth="1"   />
+        <line x1="1280" y1="300" x2="1380" y2="420" stroke="rgba(0,86,179,0.08)" strokeWidth="1"   />
+        <line x1="1150" y1="380" x2="1050" y2="520" stroke="rgba(0,86,179,0.09)" strokeWidth="1.2" />
+        <line x1="1050" y1="520" x2="950"  y2="620" stroke="rgba(0,86,179,0.09)" strokeWidth="1.2" />
+        <line x1="1050" y1="520" x2="1200" y2="600" stroke="rgba(0,86,179,0.08)" strokeWidth="1"   />
+        <line x1="950"  y1="340" x2="850"  y2="460" stroke="rgba(0,86,179,0.08)" strokeWidth="1"   />
+        <line x1="1200" y1="600" x2="1320" y2="680" stroke="rgba(0,86,179,0.07)" strokeWidth="1"   />
+        <line x1="950"  y1="620" x2="1050" y2="720" stroke="rgba(0,86,179,0.07)" strokeWidth="1"   />
+
+        {/* === Neural Network Nodes === */}
+        {/* Input layer */}
+        {[180,350,520,690].map((cy,i) => (
+          <g key={`in${i}`}>
+            <circle cx="80" cy={cy} r="14" fill="rgba(0,86,179,0.08)" stroke="rgba(0,86,179,0.2)" strokeWidth="1.5" />
+            <circle cx="80" cy={cy} r="6"  fill="rgba(0,86,179,0.25)" />
+          </g>
+        ))}
+        {/* Hidden layer 1 */}
+        {[150,300,450,600,750].map((cy,i) => (
+          <g key={`h1${i}`}>
+            <circle cx="280" cy={cy} r="12" fill="rgba(0,86,179,0.08)" stroke="rgba(0,86,179,0.18)" strokeWidth="1.5" />
+            <circle cx="280" cy={cy} r="5"  fill="rgba(0,86,179,0.22)" />
+          </g>
+        ))}
+        {/* Hidden layer 2 */}
+        {[200,380,560,740].map((cy,i) => (
+          <g key={`h2${i}`}>
+            <circle cx="520" cy={cy} r="12" fill="rgba(0,86,179,0.08)" stroke="rgba(0,86,179,0.18)" strokeWidth="1.5" />
+            <circle cx="520" cy={cy} r="5"  fill="rgba(0,86,179,0.22)" />
+          </g>
+        ))}
+        {/* Hidden layer 3 */}
+        {[170,340,510,680].map((cy,i) => (
+          <g key={`h3${i}`}>
+            <circle cx="760" cy={cy} r="11" fill="rgba(0,86,179,0.07)" stroke="rgba(0,86,179,0.15)" strokeWidth="1.5" />
+            <circle cx="760" cy={cy} r="4"  fill="rgba(0,86,179,0.2)" />
+          </g>
+        ))}
+
+        {/* Knowledge graph nodes — right side */}
+        {[
+          [1050,200,18],[1200,130,12],[1280,300,12],[1150,380,14],
+          [950,340,11],[1350,180,9],[1380,420,9],[1050,520,16],
+          [950,620,11],[1200,600,12],[1320,680,9],[1050,720,10],[850,460,10],
+        ].map(([cx,cy,r],i) => (
+          <g key={`kg${i}`}>
+            <circle cx={cx} cy={cy} r={r+6} fill="url(#nodeGlow)" />
+            <circle cx={cx} cy={cy} r={r}   fill="rgba(0,86,179,0.1)"  stroke="rgba(0,86,179,0.22)" strokeWidth="1.5" />
+            <circle cx={cx} cy={cy} r={r/2.5} fill="rgba(0,86,179,0.28)" />
+          </g>
+        ))}
+
+        {/* === Faint Research / Math Symbols === */}
+        {[
+          [170, 80,  "σ",  "1.6rem"],
+          [440, 820, "Σ",  "1.4rem"],
+          [900, 60,  "∇",  "1.5rem"],
+          [1380,820, "π",  "1.3rem"],
+          [650, 820, "∞",  "1.5rem"],
+          [30,  820, "λ",  "1.4rem"],
+          [1400,60,  "θ",  "1.4rem"],
+          [750, 60,  "μ",  "1.3rem"],
+        ].map(([x, y, sym, size], i) => (
+          <text key={`sym${i}`} x={x} y={y} fontSize={size}
+            fill="rgba(0,86,179,0.1)" fontFamily="Georgia, serif" fontStyle="italic"
+            textAnchor="middle">
+            {sym}
+          </text>
+        ))}
+      </svg>
 
       <div className="container position-relative z-1">
         {slides.map((slide, index) => (

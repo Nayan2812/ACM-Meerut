@@ -41,12 +41,12 @@ function AboutBlocks() {
   ];
 
   return (
-    <section className="py-6 bg-white overflow-hidden">
+    <section className="py-6 bg-white overflow-hidden" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
       <div className="container">
         <div className="text-center mb-5">
-          <h6 className="text-uppercase text-primary fw-bold letter-spacing-2 mb-2">
+          <span className="d-inline-block py-1 px-3 rounded-pill bg-light text-primary fw-bold text-uppercase mb-3 shadow-sm" style={{ fontSize: "0.8rem", letterSpacing: "1px" }}>
             Global Vision
-          </h6>
+          </span>
           <h2 className="display-4 fw-bold">About Our Chapter</h2>
         </div>
 

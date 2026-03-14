@@ -50,12 +50,12 @@ function Events() {
 
   return (
     <>
-      <Navbar />
+      <Navbar whiteBg={true} />
 
       {/* Page Header */}
       <section 
         className="position-relative d-flex align-items-center justify-content-center bg-primary text-white"
-        style={{ minHeight: "35vh", paddingTop: "80px", background: "linear-gradient(135deg, #0056b3 0%, #004494 100%)" }}
+        style={{ minHeight: "35vh", marginTop: "80px", background: "linear-gradient(135deg, #0056b3 0%, #004494 100%)" }}
       >
         <div className="container text-center position-relative z-1">
           <h1 className="display-4 fw-bold mb-3 animate-fade-in">Our Events</h1>

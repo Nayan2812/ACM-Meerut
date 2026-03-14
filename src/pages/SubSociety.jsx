@@ -57,7 +57,7 @@ function SubSociety() {
 
   return (
     <>
-      <Navbar />
+      <Navbar whiteBg={true} />
 
       {/* Hero Section */}
       <section

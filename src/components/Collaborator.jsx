@@ -20,7 +20,7 @@ function Collaborator() {
   }, []);
 
   return (
-    <section className="py-6 bg-light position-relative overflow-hidden" ref={sectionRef}>
+    <section className="py-6 bg-light position-relative overflow-hidden" ref={sectionRef} style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
       {/* Background */}
       <div className="position-absolute top-0 start-0 w-100 h-100 bg-gradient-primary opacity-5" style={{ zIndex: 0 }}></div>
 

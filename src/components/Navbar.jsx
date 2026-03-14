@@ -2,7 +2,7 @@ import acmLogo1 from "../assets/images/LogoACMmeerut.png";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function Navbar() {
+function Navbar({ whiteBg = false }) {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -16,9 +16,23 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Handle scrolling when route/hash changes
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [location]);
+
   const navLinks = [
     { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
+    { path: "/#about", label: "About" },
     { path: "/officers", label: "Officers" },
     { path: "/sub-society", label: "SIGs" },
     { path: "/initiative", label: "Initiatives" },
@@ -28,11 +42,11 @@ function Navbar() {
   return (
     <nav
       className={`navbar navbar-expand-lg fixed-top transition-all duration-300 ${
-        scrolled ? "glass shadow-sm py-2" : "bg-transparent py-4"
+        (scrolled || whiteBg) ? "glass shadow-sm py-2" : "bg-transparent py-4"
       }`}
       style={{ transition: "all 0.3s ease-in-out" }}
     >
-      <div className="container">
+      <div className="container-fluid px-4 px-lg-5">
         <Link className="navbar-brand d-flex align-items-center gap-2 group" to="/">
           <img
             src={acmLogo1}
@@ -69,7 +83,10 @@ function Navbar() {
         <div className={`collapse navbar-collapse justify-content-end ${isOpen ? "show" : ""}`} id="navbarNav">
           <ul className="navbar-nav align-items-center gap-1 gap-lg-3 pt-3 pt-lg-0">
             {navLinks.map((link) => {
-              const isActive = location.pathname === link.path;
+              const isActive = link.path.includes("#") 
+                ? location.pathname === "/" && location.hash === link.path.replace("/", "")
+                : location.pathname === link.path && !location.hash;
+                
               return (
                 <li className="nav-item w-100 w-lg-auto" key={link.path}>
                   <Link

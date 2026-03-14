@@ -5,7 +5,7 @@ function PressReleases() {
   const images = [press1, press2];
 
   return (
-    <section className="py-6 bg-white">
+    <section className="py-6 bg-white" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
       <div className="container">
         <div className="text-center mb-5">
           <h2 className="fw-bold display-5">
