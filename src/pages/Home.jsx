@@ -12,10 +12,10 @@ function Home() {
     <>
       <Navbar />
       <Hero />
-      <Collaborator />
-      <PressReleases />
       <About />
       <AboutBlocks />
+      <PressReleases />
+      <Collaborator />
       <Footer />
     </>
   );

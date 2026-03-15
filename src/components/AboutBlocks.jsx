@@ -67,10 +67,10 @@ function AboutBlocks() {
                   className="position-absolute bg-primary rounded-4 opacity-10"
                   style={{
                     top: "0",
-                    left: "0",
-                    width: "100%",
+                    left: "50%",
+                    width: "380px",
                     height: "100%",
-                    transform: "rotate(-3deg)",
+                    transform: "translateX(-50%) rotate(-3deg)",
                     zIndex: 0,
                   }}
                 ></div>
@@ -78,7 +78,7 @@ function AboutBlocks() {
                   src={item.image}
                   alt={item.title}
                   className="img-fluid rounded-4 shadow-lg position-relative z-1 hover-lift"
-                  style={{ width: "100%", transition: "all 0.3s ease" }}
+                  style={{ maxWidth: "360px", width: "100%", display: "block", margin: "0 auto", transition: "all 0.3s ease" }}
                 />
               </div>
             </div>

@@ -22,7 +22,14 @@ function Navbar({ whiteBg = false }) {
       const element = document.querySelector(location.hash);
       if (element) {
         setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth" });
+          const headerOffset = 65;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
         }, 100);
       }
     } else {
@@ -35,6 +42,7 @@ function Navbar({ whiteBg = false }) {
     { path: "/#about", label: "About" },
     { path: "/officers", label: "Officers" },
     { path: "/sub-society", label: "SIGs" },
+    { path: "/news", label: "News" },
     { path: "/initiative", label: "Initiatives" },
     { path: "/events", label: "Events" },
   ];
@@ -51,19 +59,30 @@ function Navbar({ whiteBg = false }) {
           <img
             src={acmLogo1}
             alt="ACM Logo"
-            height="50"
             className="d-inline-block align-top hover-lift"
+            style={{
+              height: scrolled ? 45 : 80,
+              transition: "height 0.3s ease-in-out",
+            }}
           />
           <div className="d-flex flex-column d-none d-sm-flex">
             <span
               className="fw-bold lh-1"
-              style={{ color: "var(--primary-color)", fontSize: "1.1rem" }}
+              style={{
+                color: "var(--primary-color)",
+                fontSize: scrolled ? "1rem" : "1.5rem",
+                transition: "font-size 0.3s ease-in-out",
+              }}
             >
               ACM Meerut
             </span>
             <span
               className="small fw-normal text-secondary text-uppercase"
-              style={{ fontSize: "0.7rem", letterSpacing: "1px" }}
+              style={{
+                fontSize: scrolled ? "0.65rem" : "0.9rem",
+                letterSpacing: "1px",
+                transition: "font-size 0.3s ease-in-out",
+              }}
             >
               Professional Chapter
             </span>
@@ -118,17 +137,6 @@ function Navbar({ whiteBg = false }) {
                 </li>
               );
             })}
-            <li className="nav-item ms-lg-2 mt-3 mt-lg-0">
-              <a
-                href="https://www.linkedin.com/company/acm-meerut-professional-chapter/"
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-outline-primary rounded-pill px-4 py-2 hover-lift fw-semibold"
-                style={{ fontSize: '0.9rem' }}
-              >
-                Join Us
-              </a>
-            </li>
           </ul>
         </div>
       </div>

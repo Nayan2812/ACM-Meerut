@@ -5,6 +5,7 @@ import Officers from "./pages/Officers";
 import Initiative from "./pages/Initiative";
 import Events from "./pages/Events";
 import SubSociety from "./pages/SubSociety";
+import News from "./pages/News";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/initiative" element={<Initiative />} />
         <Route path="/events" element={<Events />} />
         <Route path="/sub-society" element={<SubSociety />} />
+        <Route path="/news" element={<News />} />
       </Routes>
     </BrowserRouter>
   );
